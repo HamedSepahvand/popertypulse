@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  /* Header */
+  --color-header-bg: var(--color-zinc-100);
+  --color-header-text: var(--color-zinc-900);
+  --color-header-text-hover: var(--color-sky-700);
+  --color-header-buttons: var(--color-sky-800);
+  --color-header-buttons-hover: var(--color-sky-900);
+  --color-header-border1: var(--color-sky-500);
+  --color-header-border2: var(--color-sky-600);
+
+  /* Body */
+  --color-body-title: var(--color-zinc-900);
+  --color-body-bg: var(--color-zinc-50);
+
+  /* Product Card */
+  --color-card-border: var(--color-zinc-200);
+  --color-card-title: var(--color-zinc-900);
+  --color-card-price: var(--color-cyan-700);
+  --color-card-bg: var(--color-gray-200);
+
+  /* Footer */
+  --color-footer-text: var(--color-zinc-900);
+}
+
+/* Dark Mode */
+.dark {
+  /* Header */
+  --color-header-bg: var(--color-zinc-950);
+  --color-header-text: var(--color-zinc-100);
+  --color-header-text-hover: var(--color-sky-300);
+  --color-header-buttons: var(--color-sky-500);
+  --color-header-buttons-hover: var(--color-sky-700);
+  --color-header-border1: var(--color-sky-900);
+  --color-header-border2: var(--color-zinc-500);
+
+  /* Body */
+  --color-body-title: var(--color-zinc-100);
+  --color-body-bg: var(--color-zinc-900);
+
+  /* Product Card */
+  --color-card-border: var(--color-zinc-500);
+  --color-card-title: var(--color-zinc-100);
+  --color-card-price: var(--color-sky-500);
+  --color-card-bg: var(--color-zinc-800);
+
+  /* Footer */
+  --color-footer-text: var(--color-zinc-100);
+}
