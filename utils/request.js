@@ -3,10 +3,10 @@ const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
 // Fetch All Properties
 export async function fetchProperties({ showFeatured = false } = {}) {
   try {
-    // Handle the case where the domain is not available yet
     if (!apiDomain) {
-      return [];
+      return { properties: [] };
     }
+
     const res = await fetch(
       `${apiDomain}/properties${showFeatured ? "/featured" : ""}`,
       {
@@ -21,18 +21,17 @@ export async function fetchProperties({ showFeatured = false } = {}) {
     return res.json();
   } catch (err) {
     console.log(err);
-    return [];
+    return { properties: [] };
   }
 }
 
 // Fetch single property
-
 export async function fetchProperty(id) {
   try {
-    // Handle the case where the domain is not available yet
     if (!apiDomain) {
       return null;
     }
+
     const res = await fetch(`${apiDomain}/properties/${id}`);
 
     if (!res.ok) {
