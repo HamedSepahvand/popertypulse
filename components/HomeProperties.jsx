@@ -1,16 +1,30 @@
+"use client";
+
 import PropertyCard from "./PropertyCard";
 import Link from "next/link";
-import { fetchProperties } from "@/utils/request";
+import { useEffect, useState } from "react";
 
-const HomeProperties = async () => {
-  const data = await fetchProperties();
-
-  const recentProperties = data.properties
-    .sort(() => {
-      const random = Math.random() - Math.random();
-      return random;
-    })
-    .slice(0, 3);
+const HomeProperties = () => {
+  const [properties, setProperties] = useState([]);
+  useEffect(() => {
+    const getProperties = async () => {
+      try {
+        const res = await fetch("/api/properties");
+        if (!res.ok) {
+          throw new Error("Failed to fetch properties");
+        }
+        const data = await res.json();
+        const recentProperties = data.properties
+          .sort(() => Math.random() - Math.random())
+          .slice(0, 3);
+        setProperties(recentProperties);
+      } catch (error) {
+        console.error(error);
+        setProperties([]);
+      }
+    };
+    getProperties();
+  }, []);
 
   return (
     <>
@@ -20,10 +34,10 @@ const HomeProperties = async () => {
             Recent Properties
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {recentProperties.length === 0 ? (
+            {properties.length === 0 ? (
               <p>No Properties Found</p>
             ) : (
-              recentProperties.map((property) => (
+              properties.map((property) => (
                 <PropertyCard key={property._id} property={property} />
               ))
             )}
