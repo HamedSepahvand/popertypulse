@@ -12,7 +12,7 @@ import {
 } from "react-share";
 
 const ShareButton = ({ property }) => {
-  const shareUrl = `${process.env.NEXT_PUBLIC_DOMAIN}/properties/${property._id}`;
+  const shareUrl = `${process.env.NEXT_PRIVATE_DOMAIN}/properties/${property._id}`;
   return (
     <>
       <h3 className="text-xl font-bold text-center pt-2">
