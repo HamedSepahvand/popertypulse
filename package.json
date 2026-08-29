@@ -40,7 +40,7 @@
     "sweetalert2": "^11.26.25"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.3.3",
     "babel-plugin-react-compiler": "1.0.0",
     "tailwindcss": "^4"
   }
