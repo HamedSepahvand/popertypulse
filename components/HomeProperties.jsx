@@ -3,9 +3,11 @@
 import PropertyCard from "./PropertyCard";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Spinner from "@/components/Spinner";
 
 const HomeProperties = () => {
   const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const getProperties = async () => {
       try {
@@ -21,6 +23,8 @@ const HomeProperties = () => {
       } catch (error) {
         console.error(error);
         setProperties([]);
+      } finally {
+        setLoading(false);
       }
     };
     getProperties();
@@ -34,7 +38,9 @@ const HomeProperties = () => {
             Recent Properties
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {properties.length === 0 ? (
+            {loading ? (
+              <Spinner />
+            ) : properties.length === 0 ? (
               <p>No Properties Found</p>
             ) : (
               properties.map((property) => (
