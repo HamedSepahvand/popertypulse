@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "vercel-build": "npm install --ignore-scripts && npm run build"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1109.0",
