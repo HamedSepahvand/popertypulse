@@ -22,81 +22,105 @@ const PropertyCard = ({ property }) => {
   };
 
   return (
-    <div className="rounded-xl shadow-md relative">
-      <div className="relative h-[290px]">
+    <div className="relative overflow-hidden rounded-xl bg-white shadow-md">
+      {/* Image */}
+      <div className="relative aspect-[16/10] w-full">
         <Image
           src={property.images[0]}
           alt={property.name}
           fill
-          width={0}
-          height={0}
-          sizes="100vw"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover"
         />
-      </div>
-      <div className="p-4">
-        <div className="text-left md:text-center lg:text-left mb-6">
-          <div className="text-gray-600">{property.type}</div>
-          <h3 className="text-xl font-bold h-10">{property.name}</h3>
-        </div>
-        <h3 className="absolute top-[10px] right-[10px] bg-white px-4 py-2 rounded-lg text-blue-500 font-bold text-right md:text-center lg:text-right">
-          ${getRateDisplay()}
-        </h3>
 
-        <div className="flex justify-around gap-3 text-gray-500 mb-4">
-          <div className="flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 rounded-lg">
-            <FaBed className="text-blue-400" />
-            <span className="text-sm">
-              {property.beds} <span className="hidden sm:inline">Beds</span>
+        {/* Price */}
+        <div className="absolute right-3 top-3 max-w-[65%] truncate rounded-lg bg-white/95 px-3 py-1.5 text-sm font-bold text-blue-500 shadow-sm sm:text-base">
+          ${getRateDisplay()}
+        </div>
+      </div>
+
+      <div className="p-4">
+        {/* Type & Name */}
+        <div className="mb-4">
+          <p className="mb-1 text-xs text-gray-500 sm:text-sm">
+            {property.type}
+          </p>
+
+          <h3 className="truncate text-lg font-bold text-gray-900 sm:text-xl">
+            {property.name}
+          </h3>
+        </div>
+
+        {/* Features */}
+        <div className="mb-4 flex min-w-0 items-center justify-between border-y border-gray-100 py-3 text-gray-500">
+          <div className="flex min-w-0 items-center gap-1">
+            <FaBed className="shrink-0 text-sm text-blue-400" />
+            <span className="truncate text-xs sm:text-sm">
+              {property.beds}
+              <span className="hidden sm:inline"> Beds</span>
             </span>
           </div>
-          <div className="flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 rounded-lg">
-            <FaBath className="text-blue-400" />
-            <span className="text-sm">
-              {property.baths} <span className="hidden sm:inline">Baths</span>
+
+          <div className="mx-2 h-4 w-px shrink-0 bg-gray-200" />
+
+          <div className="flex min-w-0 items-center gap-1">
+            <FaBath className="shrink-0 text-sm text-blue-400" />
+            <span className="truncate text-xs sm:text-sm">
+              {property.baths}
+              <span className="hidden sm:inline"> Baths</span>
             </span>
           </div>
-          <div className="flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 rounded-lg">
-            <FaRulerCombined className="text-blue-400" />
-            <span className="text-sm">
-              {property.square_feet.toLocaleString()}{" "}
-              <span className="hidden sm:inline">sqft</span>
+
+          <div className="mx-2 h-4 w-px shrink-0 bg-gray-200" />
+
+          <div className="flex min-w-0 items-center gap-1">
+            <FaRulerCombined className="shrink-0 text-sm text-blue-400" />
+            <span className="truncate text-xs sm:text-sm">
+              {property.square_feet.toLocaleString()}
+              <span className="hidden sm:inline"> sqft</span>
             </span>
           </div>
         </div>
 
         {/* Rates */}
-        <div className="flex justify-center gap-4 text-sm mb-4">
+        <div className="mb-4 flex min-w-0 items-center justify-center gap-2 whitespace-nowrap text-[10px] font-medium text-green-700 sm:gap-3 sm:text-xs">
           {property.rates.weekly && (
-            <span className=" font-medium text-green-700 bg-green-50 px-3 py-1.5 rounded-full">
-              <FaMoneyBill className="inline mr-1.5" /> Weekly
+            <span className="flex min-w-0 items-center gap-1">
+              <FaMoneyBill className="shrink-0" />
+              <span>Weekly</span>
             </span>
           )}
+
           {property.rates.monthly && (
-            <span className=" font-medium text-green-700 bg-green-50 px-3 py-1.5 rounded-full">
-              <FaMoneyBill className="inline mr-1.5" /> Monthly
+            <span className="flex min-w-0 items-center gap-1">
+              <FaMoneyBill className="shrink-0" />
+              <span>Monthly</span>
             </span>
           )}
+
           {property.rates.nightly && (
-            <span className=" font-medium text-green-700 bg-green-50 px-3 py-1.5 rounded-full">
-              <FaMoneyBill className="inline mr-1.5" /> Nightly
+            <span className="flex min-w-0 items-center gap-1">
+              <FaMoneyBill className="shrink-0" />
+              <span>Nightly</span>
             </span>
           )}
         </div>
 
-        <div className="border border-gray-100 mb-5"></div>
+        {/* Bottom */}
+        <div className="flex min-w-0 items-center justify-between gap-2">
+          {/* Location */}
+          <div className="flex min-w-0 items-center gap-1.5 text-orange-700">
+            <FaMapMarker className="shrink-0 text-sm" />
 
-        <div className="flex flex-col lg:flex-row justify-between mb-4">
-          <div className="flex align-middle gap-2 mb-4 lg:mb-0">
-            <i className="fa-solid fa-location-dot text-lg text-orange-700"></i>
-            <span className="text-orange-700">
-              <FaMapMarker className="inline mr-2" /> {property.location.city} ,{" "}
-              {property.location.state}
+            <span className="truncate text-xs sm:text-sm">
+              {property.location.city}, {property.location.state}
             </span>
           </div>
+
+          {/* Details */}
           <Link
             href={`/properties/${property._id}`}
-            className="h-[36px] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm"
+            className="shrink-0 rounded-lg bg-blue-500 px-3 py-2 text-xs text-white transition hover:bg-blue-600 sm:px-4 sm:text-sm"
           >
             Details
           </Link>

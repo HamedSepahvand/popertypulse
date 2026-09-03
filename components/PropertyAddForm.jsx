@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { states, citiesByState } from "./statesAndCities";
-import PropertyMap from "./PropertyMap";
 
 const PropertyAddForm = () => {
   const [mounted, setMounted] = useState(false);
