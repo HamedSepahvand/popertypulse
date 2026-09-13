@@ -19,7 +19,7 @@ const Footer = () => {
         </div>
         <div>
           <p className="text-sm text-gray-500 mt-2 md:mt-0">
-            &copy; 2026 PropertyPulse. All rights reserved.
+            &copy; 2026 PropertyPulse. All rights reserved by Hamed Sepahvand.
           </p>
         </div>
       </div>
