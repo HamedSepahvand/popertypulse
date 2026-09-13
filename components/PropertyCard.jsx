@@ -52,7 +52,7 @@ const PropertyCard = ({ property }) => {
         </div>
 
         {/* Features */}
-        <div className="mb-4 flex min-w-0 items-center justify-between border-y border-gray-100 py-3 text-gray-500">
+        <div className="mb-4 flex min-w-0 items-center justify-around border-y border-gray-100 py-3 text-gray-500">
           <div className="flex min-w-0 items-center gap-1">
             <FaBed className="shrink-0 text-sm text-blue-400" />
             <span className="truncate text-xs sm:text-sm">
